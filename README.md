@@ -1,5 +1,5 @@
 ## Diffuser setup(Local Mac)
-Diffuser documents : https://huggingface.co/docs/diffusers/index
+Diffusers documents : https://huggingface.co/docs/diffusers/index
 
 brew install cmake protobuf rust python@3.9 git wget
 brew install miniforge
@@ -31,5 +31,5 @@ curl --location 'http://127.0.0.1:5000/generate_image' \
 curl --location 'http://127.0.0.1:5000/vram_status'
 
 ## DOCKER
-# docker build -t mage81/flask_creation:latest .
-# docker push mage81/flask_creation:latest
+# docker build -t mage81/flask_diffusers:latest .
+# docker push mage81/flask_diffusers:latest
