@@ -1,0 +1,10 @@
+flask
+flask-socketio
+eventlet
+diffusers
+transformers
+torch
+torchvision
+torchaudio
+Pillow
+huggingface_hub

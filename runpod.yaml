@@ -1,0 +1,33 @@
+# runpod.yaml - RunPod GitHub Deploy용 설정 파일
+
+name: image-creation-deploy
+
+# 사용할 Docker 이미지 베이스 (GPU 지원 포함)
+docker:
+  image: nvidia/cuda:12.1.1-base-ubuntu22.04
+  gpu: true
+  ports:
+    - containerPort: 8000
+      protocol: tcp
+
+# GitHub 리포지토리에서 가져올 코드 위치
+source:
+  type: git
+  url: https://github.com/your-username/image_creation
+  branch: main
+
+# 빌드 및 실행에 사용할 명령어들
+setup:
+  - apt update && apt install -y python3 python3-pip git
+  - pip3 install --upgrade pip
+  - pip3 install flask flask-socketio eventlet torch torchvision torchaudio diffusers transformers pillow accelerate
+
+# 실행 엔트리포인트
+run:
+  command: python3 app.py
+  workingDirectory: /workspace/image_creation
+
+# 환경 변수 (필요 시 추가)
+env:
+  FLASK_ENV: production
+  HUGGINGFACE_HUB_TOKEN: ${HUGGINGFACE_HUB_TOKEN}
